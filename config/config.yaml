@@ -1,0 +1,24 @@
+# MCP Foundry — Configuration File
+# Copy this file and adjust values for your environment.
+# Environment variables always override values set here.
+
+# Exchange connection
+exchange: bybit
+testnet: true
+api_key: ""          # Or set EXCHANGE_API_KEY env var
+api_secret: ""       # Or set EXCHANGE_API_SECRET env var
+category: linear     # "linear" for USDT perps, "spot" for spot
+
+# MCP Server
+server_host: "0.0.0.0"
+server_port: 8000
+log_level: INFO
+
+# Risk management defaults
+risk:
+  max_risk_per_trade_pct: 2.0
+  max_position_size_pct: 10.0
+  max_total_exposure_pct: 50.0
+  max_open_positions: 5
+  max_daily_loss_pct: 5.0
+  min_balance_reserve: 100.0

@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-foundry"
+version = "0.1.0"
+description = "The Universal Trading Interface — connecting AI agents to financial markets through one open standard."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.11"
+authors = [
+    {name = "MCP Foundry Contributors"},
+]
+keywords = [
+    "trading",
+    "mcp",
+    "ai-agents",
+    "universal-trading-interface",
+    "bybit",
+    "crypto",
+    "fintech",
+    "agentic-trading",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "aiohttp>=3.9.0",
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.2.0",
+    "mypy>=1.8.0",
+    "httpx>=0.26.0",
+]
+yaml = [
+    "pyyaml>=6.0",
+]
+all = [
+    "mcp-foundry[dev,yaml]",
+]
+
+[project.urls]
+Homepage = "https://github.com/mcp-foundry/mcp-foundry"
+Documentation = "https://github.com/mcp-foundry/mcp-foundry/tree/main/docs"
+Repository = "https://github.com/mcp-foundry/mcp-foundry"
+Issues = "https://github.com/mcp-foundry/mcp-foundry/issues"
+Changelog = "https://github.com/mcp-foundry/mcp-foundry/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["core*", "connectors*", "utils*", "enterprise*", "gateway*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
